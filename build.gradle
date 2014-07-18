@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.eclipse.jgit:org.eclipse.jgit:3.+'
+    compile 'org.codehaus.groovy:groovy:2.3.+'
+    compile 'org.codehaus.groovy:groovy-templates:2.3.+'
+}
