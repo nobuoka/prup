@@ -1,4 +1,4 @@
-package info.vividcode.develop.app.progen;
+package info.vividcode.develop.app.prup;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package info.vividcode.develop.app.progen;
+package info.vividcode.develop.app.prup;
 
 import groovy.lang.Binding;
 import groovy.lang.Closure;

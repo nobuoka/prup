@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    compile 'com.google.guava:guava:17.+'
     compile 'org.eclipse.jgit:org.eclipse.jgit:3.+'
     compile 'org.codehaus.groovy:groovy:2.3.+'
     compile 'org.codehaus.groovy:groovy-templates:2.3.+'
