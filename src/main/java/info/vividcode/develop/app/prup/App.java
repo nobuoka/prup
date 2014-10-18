@@ -34,8 +34,9 @@ public class App {
         Path srcDirContainerPath = Files.createTempDirectory("prup");
         System.out.println(srcDirContainerPath);
         // 元となるプロジェクトを Git clone してくる。
-        //Git srcGit = GitProcess.cloneRepo(srcDirContainerPath);
-        Git srcGit = Git.open(Paths.get("src-repo").toFile());
+        String cloneSource = "https://github.com/cookpad/gradle-android-sdk-manager.git";
+        Git srcGit = GitProcess.cloneRepo(cloneSource, srcDirContainerPath);
+        //Git srcGit = Git.open(Paths.get("src-repo").toFile());
         // ルール読み込み。
         String ruleScript = GitProcess.readRuleScript(srcGit.getRepository());
         Rule rule = new RuleProcessor().evalRuleScript(ruleScript);
@@ -63,7 +64,7 @@ public class App {
         return params;
     }
 
-    // コミットの作り方: https://gist.github.com/rkapsi/3298119
+    // Way to create Git repository by JGit: https://gist.github.com/rkapsi/3298119
     private static void generate(Repository srcRepo, Path destPath, Map<String, String> params, Map<String, String> genRule)
             throws IOException, GitAPIException {
         try (GitFirstCommitBuilder b = GitFirstCommitBuilder.create()) {
@@ -78,7 +79,7 @@ public class App {
                         String content = new String(byteContent, StandardCharsets.UTF_8);
                         t = engine.createTemplate(content);
                         String c = t.make(params).toString();
-                        // Git リポジトリへの追加。
+                        // Add Git repository.
                         b.add(Paths.get(destFilePathStr), c.getBytes(StandardCharsets.UTF_8));
                     } catch (Exception e) {
                         throw new RuntimeException(e);

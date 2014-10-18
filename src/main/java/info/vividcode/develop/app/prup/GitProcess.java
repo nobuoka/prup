@@ -24,9 +24,9 @@ import org.eclipse.jgit.treewalk.TreeWalk;
 
 public class GitProcess {
 
-    public static Git cloneRepo(Path cloneTarget) throws InvalidRemoteException, TransportException, GitAPIException {
+    public static Git cloneRepo(String cloneSource, Path cloneTarget) throws InvalidRemoteException, TransportException, GitAPIException {
         return Git.cloneRepository()
-                .setURI("https://github.com/cookpad/gradle-android-sdk-manager.git")
+                .setURI(cloneSource)
                 .setDirectory(cloneTarget.toFile())
                 .setBare(true)
                 .call();
